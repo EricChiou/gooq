@@ -1,2 +1,2 @@
 ## gooq
-Inspired by [JOOQ](https://www.jooq.org/).
+Simply SQL ORM. Inspired by [JOOQ](https://www.jooq.org/).
