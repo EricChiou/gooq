@@ -71,7 +71,7 @@ func CrossJoin(table string) string {
 	return " CROSS JOIN " + table
 }
 
-func NatiralJoin(table string) string {
+func NaturalJoin(table string) string {
 	return " NATURAL JOIN " + table
 }
 
@@ -107,6 +107,15 @@ func NotExists() string {
 	return " NOT EXISTS"
 }
 
+// GROUP BY column1, column2, ...
+func GroupBy(columns ...string) string {
+	return " GROUP BY " + mergeColumns(columns)
+}
+
+func Having(c condition) string {
+	return " HAVING " + string(c)
+}
+
 // left parenthesis
 func Lp() string {
 	return " ("
@@ -115,13 +124,4 @@ func Lp() string {
 // right parenthesis
 func Rp() string {
 	return " )"
-}
-
-// GROUP BY column1, column2, ...
-func GroupBy(columns ...string) string {
-	return " GROUP BY " + mergeColumns(columns)
-}
-
-func Having(c condition) string {
-	return " HAVING " + string(c)
 }
