@@ -201,3 +201,8 @@ func (sql *SQL) Rp() *SQL {
 	sql.sentence += Rp()
 	return sql
 }
+
+func (sql *SQL) As(as string) *SQL {
+	sql.sentence += " " + as
+	return sql
+}

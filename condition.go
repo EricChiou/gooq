@@ -2,82 +2,67 @@ package gooq
 
 type condition string
 
-// data = value
-func Eq(data string, value interface{}) condition {
-	return condition(data + " = " + convert2String(value))
+// column = value
+func Eq(column string, value interface{}) condition {
+	return condition(column + " = " + convert2String(value))
 }
 
-// data > value
-func Gt(data string, value interface{}) condition {
-	return condition(data + " > " + convert2String(value))
+// column > value
+func Gt(column string, value interface{}) condition {
+	return condition(column + " > " + convert2String(value))
 }
 
-// data < value
-func Lt(data string, value interface{}) condition {
-	return condition(data + " < " + convert2String(value))
+// column < value
+func Lt(column string, value interface{}) condition {
+	return condition(column + " < " + convert2String(value))
 }
 
-// data >= value
-func GtEq(data string, value interface{}) condition {
-	return condition(data + " >= " + convert2String(value))
+// column >= value
+func GtEq(column string, value interface{}) condition {
+	return condition(column + " >= " + convert2String(value))
 }
 
-// data <= value
-func LtEq(data string, value interface{}) condition {
-	return condition(data + " <= " + convert2String(value))
+// column <= value
+func LtEq(column string, value interface{}) condition {
+	return condition(column + " <= " + convert2String(value))
 }
 
-// data IN ( value1, value2, ...)
-func In(data string, values ...interface{}) condition {
-	return condition(data + " IN ( " + mergeValues(values) + " )")
+// column IN ( value1, value2, ...)
+func In(column string, values ...interface{}) condition {
+	return condition(column + " IN ( " + mergeValues(values) + " )")
 }
 
-// data NOT IN ( value1, value2, ...)
-func NotIn(data string, values ...interface{}) condition {
-	return condition(data + " NOT IN ( " + mergeValues(values) + " )")
+// column NOT IN ( value1, value2, ...)
+func NotIn(column string, values ...interface{}) condition {
+	return condition(column + " NOT IN ( " + mergeValues(values) + " )")
 }
 
-// data BETWEEN value1 AND value2
-func Between(data string, value1, value2 interface{}) condition {
-	return condition(data + " BETWEEN " + convert2String(value1) + " AND " + convert2String(value2))
+// column BETWEEN value1 AND value2
+func Between(column string, value1, value2 interface{}) condition {
+	return condition(column + " BETWEEN " + convert2String(value1) + " AND " + convert2String(value2))
 }
 
-// data NOT BETWEEN value1 AND value2
-func NotBetween(data string, value1, value2 interface{}) condition {
-	return condition(data + " NOT BETWEEN " + convert2String(value1) + " AND " + convert2String(value2))
+// column NOT BETWEEN value1 AND value2
+func NotBetween(column string, value1, value2 interface{}) condition {
+	return condition(column + " NOT BETWEEN " + convert2String(value1) + " AND " + convert2String(value2))
 }
 
-// data LIKE pattern
-func Like(data, pattern string) condition {
-	return condition(data + " LIKE " + pattern)
+// column LIKE pattern
+func Like(column, pattern string) condition {
+	return condition(column + " LIKE " + pattern)
 }
 
-// data NOT LIKE pattern
-func NotLike(data, pattern string) condition {
-	return condition(data + " NOT LIKE " + pattern)
+// column NOT LIKE pattern
+func NotLike(column, pattern string) condition {
+	return condition(column + " NOT LIKE " + pattern)
 }
 
-// data IS NULL
-func IsNull(data string) condition {
-	return condition(data + " IS NULL")
+// column IS NULL
+func IsNull(column string) condition {
+	return condition(column + " IS NULL")
 }
 
-// data IS NOT NULL
-func IsNotNull(data string) condition {
-	return condition(data + " IS NOT NULL")
-}
-
-// column ASC
-func Asc(column string) string {
-	return column + " ASC"
-}
-
-// column DESC
-func Desc(column string) string {
-	return column + " DESC"
-}
-
-// column AS as
-func As(column, as string) string {
-	return column + " AS " + as
+// column IS NOT NULL
+func IsNotNull(column string) condition {
+	return condition(column + " IS NOT NULL")
 }

@@ -1,9 +1,5 @@
-## gooq
-Simply SQL ORM. Inspired by [JOOQ](https://www.jooq.org/).  
+package main
 
-## How to use
-see example
-```go
 import (
 	"fmt"
 
@@ -59,4 +55,3 @@ func main() {
 	fmt.Println(sql.GetSQL())
 	// result: SELECT COUNT(*) FROM user WHERE status = 'active'
 }
-```
