@@ -28,15 +28,15 @@ func From(table string) string {
 	return " FROM " + table
 }
 
-func Where(c condition) string {
+func Where(c Condition) string {
 	return " WHERE " + string(c)
 }
 
-func And(c condition) string {
+func And(c Condition) string {
 	return " AND " + string(c)
 }
 
-func Or(c condition) string {
+func Or(c Condition) string {
 	return " OR " + string(c)
 }
 
@@ -75,7 +75,7 @@ func NaturalJoin(table string) string {
 	return " NATURAL JOIN " + table
 }
 
-func On(c condition) string {
+func On(c Condition) string {
 	return " ON " + string(c)
 }
 
@@ -112,7 +112,7 @@ func GroupBy(columns ...string) string {
 	return " GROUP BY " + mergeColumns(columns)
 }
 
-func Having(c condition) string {
+func Having(c Condition) string {
 	return " HAVING " + string(c)
 }
 

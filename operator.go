@@ -19,7 +19,7 @@ func Update(table string) string {
 }
 
 // SET condition1, condition2, ...
-func Set(conditions ...condition) string {
+func Set(conditions ...Condition) string {
 	return " SET " + mergeConditions(conditions)
 }
 

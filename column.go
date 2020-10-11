@@ -1,74 +1,74 @@
 package gooq
 
-func Column(column string) *Condition {
-	return &Condition{column: column}
+func Column(column string) *condition {
+	return &condition{column: column}
 }
 
-type Condition struct {
+type condition struct {
 	column string
 }
 
 // data = value
-func (c *Condition) Eq(value interface{}) condition {
+func (c *condition) Eq(value interface{}) Condition {
 	return Eq(c.column, value)
 }
 
 // data > value
-func (c *Condition) Gt(value interface{}) condition {
+func (c *condition) Gt(value interface{}) Condition {
 	return Gt(c.column, value)
 }
 
 // data < value
-func (c *Condition) Lt(value interface{}) condition {
+func (c *condition) Lt(value interface{}) Condition {
 	return Lt(c.column, value)
 }
 
 // data >= value
-func (c *Condition) GtEq(value interface{}) condition {
+func (c *condition) GtEq(value interface{}) Condition {
 	return GtEq(c.column, value)
 }
 
 // data <= value
-func (c *Condition) LtEq(value interface{}) condition {
+func (c *condition) LtEq(value interface{}) Condition {
 	return LtEq(c.column, value)
 }
 
 // data IN ( value1, value2, ...)
-func (c *Condition) In(values ...interface{}) condition {
+func (c *condition) In(values ...interface{}) Condition {
 	return In(c.column, values...)
 }
 
 // data NOT IN ( value1, value2, ...)
-func (c *Condition) NotIn(values ...interface{}) condition {
+func (c *condition) NotIn(values ...interface{}) Condition {
 	return NotIn(c.column, values...)
 }
 
 // data BETWEEN value1 AND value2
-func (c *Condition) Between(value1, value2 interface{}) condition {
+func (c *condition) Between(value1, value2 interface{}) Condition {
 	return Between(c.column, value1, value2)
 }
 
 // data NOT BETWEEN value1 AND value2
-func (c *Condition) NotBetween(value1, value2 interface{}) condition {
+func (c *condition) NotBetween(value1, value2 interface{}) Condition {
 	return NotBetween(c.column, value1, value2)
 }
 
 // data LIKE pattern
-func (c *Condition) Like(pattern string) condition {
+func (c *condition) Like(pattern string) Condition {
 	return Like(c.column, pattern)
 }
 
 // data NOT LIKE pattern
-func (c *Condition) NotLike(pattern string) condition {
+func (c *condition) NotLike(pattern string) Condition {
 	return NotLike(c.column, pattern)
 }
 
 // data IS NULL
-func (c *Condition) IsNull() condition {
+func (c *condition) IsNull() Condition {
 	return IsNull(c.column)
 }
 
 // data IS NOT NULL
-func (c *Condition) IsNotNull() condition {
+func (c *condition) IsNotNull() Condition {
 	return IsNotNull(c.column)
 }

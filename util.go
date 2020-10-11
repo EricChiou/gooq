@@ -22,7 +22,7 @@ func mergeValues(vs []interface{}) string {
 	return strings.TrimSuffix(s, ", ")
 }
 
-func mergeConditions(conditions []condition) string {
+func mergeConditions(conditions []Condition) string {
 	s := ""
 	for _, condition := range conditions {
 		s += string(condition) + ", "
