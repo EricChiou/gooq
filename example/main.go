@@ -9,16 +9,17 @@ import (
 func main() {
 	var f gooq.Function
 	c := gooq.Column
+	s := gooq.String
 
 	// INSERT
 	var sql gooq.SQL
-	sql.Insert("user", "acc", "pwd", "name").Values("my_account", 123456, "user_name")
+	sql.Insert("user", "acc", "pwd", "name").Values(s("my_account"), 123456, s("user_name"))
 	fmt.Println(sql.GetSQL())
 	// result: INSERT INTO user ( acc, pwd, name ) VALUES ( 'my_account', 123456, 'user_name' )
 
 	// UPDATE
 	sql = gooq.SQL{}
-	sql.Update("user").Set(c("pwd").Eq(111111), c("name").Eq("user_name2")).Where(c("id").Eq(1))
+	sql.Update("user").Set(c("pwd").Eq(111111), c("name").Eq(s("user_name2"))).Where(c("id").Eq(1))
 	fmt.Println(sql.GetSQL())
 	// result: UPDATE user SET pwd = 111111, name = 'user_name2' WHERE id = 1
 
@@ -44,14 +45,14 @@ func main() {
 	var subSql gooq.SQL
 	sql.Select("id", "acc", "name").From("user")
 	sql.Join(subSql.Lp().Select("id").From("user").OrderBy("id").Limit("0", "10").Rp().As("t").GetSQL())
-	sql.Using("id").Where(c("status").Eq("active"))
+	sql.Using("id").Where(c("status").Eq(s("active")))
 
 	fmt.Println(sql.GetSQL())
 	// result: SELECT id, acc, name FROM user INNER JOIN ( SELECT id FROM user ORDER BY id LIMIT 0, 10 ) t USING (id) WHERE status = 'active'
 
 	// COUNT
 	sql = gooq.SQL{}
-	sql.Select(f.Count("*")).From("user").Where(c("status").Eq("active"))
+	sql.Select(f.Count("*")).From("user").Where(c("status").Eq(s("active")))
 	fmt.Println(sql.GetSQL())
 	// result: SELECT COUNT(*) FROM user WHERE status = 'active'
 }

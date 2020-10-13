@@ -2,7 +2,6 @@ package gooq
 
 import (
 	"fmt"
-	"reflect"
 	"strings"
 )
 
@@ -31,8 +30,5 @@ func mergeConditions(conditions []Condition) string {
 }
 
 func convert2String(value interface{}) string {
-	if value != nil && reflect.TypeOf(value).Kind() == reflect.String {
-		return fmt.Sprintf("'%s'", value)
-	}
 	return fmt.Sprintf("%v", value)
 }

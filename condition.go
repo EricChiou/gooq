@@ -4,27 +4,27 @@ type Condition string
 
 // column = value
 func Eq(column string, value interface{}) Condition {
-	return Condition(column + " = " + convert2String(value))
+	return Condition(column + "=" + convert2String(value))
 }
 
 // column > value
 func Gt(column string, value interface{}) Condition {
-	return Condition(column + " > " + convert2String(value))
+	return Condition(column + ">" + convert2String(value))
 }
 
 // column < value
 func Lt(column string, value interface{}) Condition {
-	return Condition(column + " < " + convert2String(value))
+	return Condition(column + "<" + convert2String(value))
 }
 
 // column >= value
 func GtEq(column string, value interface{}) Condition {
-	return Condition(column + " >= " + convert2String(value))
+	return Condition(column + ">=" + convert2String(value))
 }
 
 // column <= value
 func LtEq(column string, value interface{}) Condition {
-	return Condition(column + " <= " + convert2String(value))
+	return Condition(column + "<=" + convert2String(value))
 }
 
 // column IN ( value1, value2, ...)
@@ -49,12 +49,12 @@ func NotBetween(column string, value1, value2 interface{}) Condition {
 
 // column LIKE pattern
 func Like(column, pattern string) Condition {
-	return Condition(column + " LIKE " + pattern)
+	return Condition(column + " LIKE '" + pattern + "'")
 }
 
 // column NOT LIKE pattern
 func NotLike(column, pattern string) Condition {
-	return Condition(column + " NOT LIKE " + pattern)
+	return Condition(column + " NOT LIKE '" + pattern + "'")
 }
 
 // column IS NULL
