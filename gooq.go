@@ -12,7 +12,7 @@ func (sql *SQL) GetSQL(columns ...string) string {
 }
 
 // Add other sql string
-func (sql *SQL) S(s string) *SQL {
+func (sql *SQL) Add(s string) *SQL {
 	sql.sentence += " " + s
 	return sql
 }
