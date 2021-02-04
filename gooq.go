@@ -1,3 +1,5 @@
+package gooq
+
 // Gooq instance
 type Gooq struct {
 	SQL  SQL
