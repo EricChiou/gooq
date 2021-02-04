@@ -42,9 +42,9 @@ func main() {
 
 	// INNER JOIN, Sub Query, ORDER BY, LIMIT (mysql), USING
 	sql = gooq.SQL{}
-	var subSql gooq.SQL
+	var subSQL gooq.SQL
 	sql.Select("id", "acc", "name").From("user")
-	sql.Join(subSql.Lp().Select("id").From("user").OrderBy("id").Limit("0", "10").Rp().As("t").GetSQL())
+	sql.Join(subSQL.Lp().Select("id").From("user").OrderBy("id").Limit("0", "10").Rp().As("t").GetSQL())
 	sql.Using("id").Where(c("status").Eq(s("active")))
 
 	fmt.Println(sql.GetSQL())
