@@ -2,9 +2,10 @@
 Simply SQL ORM. Inspired by [JOOQ](https://www.jooq.org/).  
 
 ## How to use
-see example
+#### Simple Example
 ```go
 import (
+	_sql "database/sql"
 	"fmt"
 
 	"github.com/EricChiou/gooq"
@@ -58,5 +59,34 @@ func main() {
 	sql.Select(f.Count("*")).From("user").Where(c("status").Eq("active"))
 	fmt.Println(sql.GetSQL())
 	// result: SELECT COUNT(*) FROM user WHERE status = 'active'
+
+	// You can also use "?" as variable then use g.AddValues(...) to set variable's value.
+	var g gooq.Gooq
+	g.SQL.Insert("user", "?", "?", "?").Values("my_account", 123456, "user_name")
+	g.AddValues("my_account", 123456, "user_name")
+
+	db, _ := _sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/dbName")
+	tx, _ := db.Begin()
+	tx.Exec(g.SQL.GetSQL(), g.Args...)
+}
+```
+  
+#### You can also use "?" as variable then use g.AddValues(args...) to set variable's value.
+```go
+import (
+	"database/sql"
+
+	"github.com/EricChiou/gooq"
+)
+
+func main() {
+	db, _ := sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/dbName")
+	tx, _ := db.Begin()
+
+	var g gooq.Gooq
+	g.SQL.Insert("user", "acc", "pwd", "name").Values("?", "?", "?")
+	g.AddValues("my_account", 123456, "user_name")
+
+	tx.Exec(g.SQL.GetSQL(), g.Args...)
 }
 ```
