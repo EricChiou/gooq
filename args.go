@@ -1,6 +1,6 @@
 // Gooq instance
 type Gooq struct {
-	SQL SQL
+	SQL  SQL
 	Args []interface{}
 }
 
