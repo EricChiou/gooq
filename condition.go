@@ -50,12 +50,12 @@ func NotBetween(column string, value1, value2 interface{}) Condition {
 
 // Like column LIKE pattern
 func Like(column, pattern string) Condition {
-	return Condition(column + " LIKE '" + pattern + "'")
+	return Condition(column + " LIKE " + pattern)
 }
 
 // NotLike column NOT LIKE pattern
 func NotLike(column, pattern string) Condition {
-	return Condition(column + " NOT LIKE '" + pattern + "'")
+	return Condition(column + " NOT LIKE " + pattern)
 }
 
 // IsNull column IS NULL
