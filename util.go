@@ -5,14 +5,6 @@ import (
 	"strings"
 )
 
-func mergeColumns(columns []string) string {
-	s := ""
-	for _, column := range columns {
-		s += column + ", "
-	}
-	return strings.TrimSuffix(s, ", ")
-}
-
 func mergeValues(vs []interface{}) string {
 	s := ""
 	for _, v := range vs {
@@ -21,14 +13,15 @@ func mergeValues(vs []interface{}) string {
 	return strings.TrimSuffix(s, ", ")
 }
 
-func mergeConditions(conditions []string) string {
-	s := ""
-	for _, condition := range conditions {
-		s += condition + ", "
-	}
-	return strings.TrimSuffix(s, ", ")
-}
-
 func convert2String(value interface{}) string {
-	return fmt.Sprintf("%v", value)
+	switch value.(type) {
+	case string:
+		if value == "?" {
+			return fmt.Sprintf("%v", value)
+		}
+		return "'" + fmt.Sprintf("%v", value) + "'"
+
+	default:
+		return fmt.Sprintf("%v", value)
+	}
 }

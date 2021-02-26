@@ -1,13 +1,15 @@
 package gooq
 
+import "strings"
+
 // Select SELECT column1, column2, ...
 func Select(columns ...string) string {
-	return " SELECT " + mergeColumns(columns)
+	return " SELECT " + strings.Join(columns, ", ")
 }
 
 // SelectDistinct SELECT DISTINCT column1, column2, ...
 func SelectDistinct(columns ...string) string {
-	return " SELECT DISTINCT " + mergeColumns(columns)
+	return " SELECT DISTINCT " + strings.Join(columns, ", ")
 }
 
 // SelectTop SQL Server, SELECT TOP number nil|PERCENT column1, column2, ...
@@ -16,7 +18,7 @@ func SelectTop(number string, percent bool, columns ...string) string {
 	if percent {
 		p = " PERCENT "
 	}
-	return " SELECT TOP " + number + p + mergeColumns(columns)
+	return " SELECT TOP " + number + p + strings.Join(columns, ", ")
 }
 
 // With WITH table
@@ -46,7 +48,7 @@ func Or(c string) string {
 
 // OrderBy ORDER BY column1 ASC|DESC, column2 ASC|DESC, ...
 func OrderBy(columns ...string) string {
-	return " ORDER BY " + mergeColumns(columns)
+	return " ORDER BY " + strings.Join(columns, ", ")
 }
 
 // Limit MySQL, LIMIT index, number
@@ -126,7 +128,7 @@ func NotExists() string {
 
 // GroupBy GROUP BY column1, column2, ...
 func GroupBy(columns ...string) string {
-	return " GROUP BY " + mergeColumns(columns)
+	return " GROUP BY " + strings.Join(columns, ", ")
 }
 
 // Having HAVING condition

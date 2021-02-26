@@ -1,5 +1,7 @@
 package gooq
 
+import "strings"
+
 // Function SQL Function
 type Function struct{}
 
@@ -40,7 +42,7 @@ func (f *Function) Char(column string) string {
 
 // Concat CONCAT(column1, column2, ...)
 func (f *Function) Concat(columns ...string) string {
-	return "CONCAT(" + mergeColumns(columns) + ")"
+	return "CONCAT(" + strings.Join(columns, ", ") + ")"
 }
 
 // Length LENGTH(column)

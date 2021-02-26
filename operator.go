@@ -1,8 +1,10 @@
 package gooq
 
+import "strings"
+
 // Insert INSERT INTO table ( column1, column2, ... )
 func Insert(table string, columns ...string) string {
-	s := mergeColumns(columns)
+	s := strings.Join(columns, ", ")
 	if len(s) > 0 {
 		return " INSERT INTO " + table + " ( " + s + " )"
 	}
@@ -21,7 +23,7 @@ func Update(table string) string {
 
 // Set SET condition1, condition2, ...
 func Set(conditions ...string) string {
-	return " SET " + mergeConditions(conditions)
+	return " SET " + strings.Join(conditions, ", ")
 }
 
 // Delete DELETE FROM table
