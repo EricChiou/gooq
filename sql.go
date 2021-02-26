@@ -32,6 +32,11 @@ func (sql *SQL) C(str string) *SQL {
 	return sql
 }
 
+// Col get column condition
+func (sql *SQL) Col(column string) *ColCondition {
+	return &ColCondition{column: column}
+}
+
 // Insert INSERT INTO table ( column1, column2, ... )
 func (sql *SQL) Insert(table string, columns ...string) *SQL {
 	sql.sentence += Insert(table, columns...)
