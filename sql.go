@@ -37,7 +37,7 @@ func (sql *SQL) Update(table string) *SQL {
 }
 
 // Set SET condition1, condition2, ...
-func (sql *SQL) Set(conditions ...Condition) *SQL {
+func (sql *SQL) Set(conditions ...string) *SQL {
 	sql.sentence += Set(conditions...)
 	return sql
 }
@@ -85,19 +85,19 @@ func (sql *SQL) From(table string) *SQL {
 }
 
 // Where WHERE condition
-func (sql *SQL) Where(c Condition) *SQL {
+func (sql *SQL) Where(c string) *SQL {
 	sql.sentence += Where(c)
 	return sql
 }
 
 // And AND condition
-func (sql *SQL) And(c Condition) *SQL {
+func (sql *SQL) And(c string) *SQL {
 	sql.sentence += And(c)
 	return sql
 }
 
 // Or OR condition
-func (sql *SQL) Or(c Condition) *SQL {
+func (sql *SQL) Or(c string) *SQL {
 	sql.sentence += Or(c)
 	return sql
 }
@@ -151,7 +151,7 @@ func (sql *SQL) NaturalJoin(table string) *SQL {
 }
 
 // On ON condition
-func (sql *SQL) On(c Condition) *SQL {
+func (sql *SQL) On(c string) *SQL {
 	sql.sentence += On(c)
 	return sql
 }
@@ -205,7 +205,7 @@ func (sql *SQL) GroupBy(columns ...string) *SQL {
 }
 
 // Having HAVING ...
-func (sql *SQL) Having(c Condition) *SQL {
+func (sql *SQL) Having(c string) *SQL {
 	sql.sentence += Having(c)
 	return sql
 }

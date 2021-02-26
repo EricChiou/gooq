@@ -30,18 +30,18 @@ func From(table string) string {
 }
 
 // Where WHERE condition
-func Where(c Condition) string {
-	return " WHERE " + string(c)
+func Where(c string) string {
+	return " WHERE " + c
 }
 
 // And AND condition
-func And(c Condition) string {
-	return " AND " + string(c)
+func And(c string) string {
+	return " AND " + c
 }
 
 // Or OR condition
-func Or(c Condition) string {
-	return " OR " + string(c)
+func Or(c string) string {
+	return " OR " + c
 }
 
 // OrderBy ORDER BY column1 ASC|DESC, column2 ASC|DESC, ...
@@ -85,8 +85,8 @@ func NaturalJoin(table string) string {
 }
 
 // On ON condition
-func On(c Condition) string {
-	return " ON " + string(c)
+func On(c string) string {
+	return " ON " + c
 }
 
 // Using USING (column)
@@ -130,8 +130,8 @@ func GroupBy(columns ...string) string {
 }
 
 // Having HAVING condition
-func Having(c Condition) string {
-	return " HAVING " + string(c)
+func Having(c string) string {
+	return " HAVING " + c
 }
 
 // Lp left parenthesis
