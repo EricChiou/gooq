@@ -13,13 +13,14 @@ func (sql *SQL) GetSQL(columns ...string) string {
 	return strings.TrimSpace(sql.sentence)
 }
 
-// Add other sql string
+// Add any sql string, deprecated.
+// Use S() instead
 func (sql *SQL) Add(str string) *SQL {
 	sql.sentence += " " + str
 	return sql
 }
 
-// S other sql string
+// S add any sql string
 func (sql *SQL) S(str string) *SQL {
 	sql.sentence += " " + str
 	return sql
